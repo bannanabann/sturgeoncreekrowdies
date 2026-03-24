@@ -1,24 +1,24 @@
+eme-chirpy.scss
 ---
 ---
 
-/* prettier-ignore */
 @use 'main
 {%- if jekyll.environment == 'production' -%}
   .bundle
 {%- endif -%}
 ';
 
-/* append your custom style below */
+/* YOUR CUSTOM STYLES GO HERE - DO NOT MODIFY THE @use LINE ABOVE */
 :root {
-  --sidebar-bg: #2c3e50;
-  --sidebar-muted-color: #bdc3c7;
-  --sidebar-active-color: #ffffff;
-  --sidebar-border-color: #34495e;
+  --sidebar-bg: #0a3444 !important;
+  --sidebar-muted-color: #ffffff !important;
+  --sidebar-active-color: #ffffff !important;
+  --sidebar-border-color: #2740a0 !important;
 }
 
 [data-mode="dark"] {
-  --sidebar-bg: #1a2632;
-  --sidebar-muted-color: #95a5a6;
-  --sidebar-active-color: #ecf0f1;
-  --sidebar-border-color: #2c3e50;
+  --sidebar-bg: #2740a0 !important;
+  --sidebar-muted-color: #ffffff !important;
+  --sidebar-active-color: #ffffff !important;
+  --sidebar-border-color: #1a2c6e !important;
 }

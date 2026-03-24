@@ -16,7 +16,7 @@ timezone:
 
 title: Sturgeon Creek Rowdies # the main title
 
-tagline: A Womens Rugby Club in Winnipef # it will display as the subtitle
+tagline: A Womens Rugby Club in Winnipeg # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A team page for SCRRC
@@ -44,7 +44,7 @@ social:
     # Uncomment below to add more social links
      - https://www.facebook.com/groups/2253000503/
      - https://www.instagram.com/sturgeoncreekrowdies/
-
+    # Link to tik tok
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
