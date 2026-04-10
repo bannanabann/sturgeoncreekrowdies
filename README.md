@@ -2,8 +2,6 @@
 
 A fork of Chirpy Starter.
 
-README
-
 ## Quick Start Overview
 
 | What you want to do | Where to put files | Special naming |
