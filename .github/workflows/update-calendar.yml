@@ -21,12 +21,13 @@ jobs:
           CALENDAR_URL="https://calendar.google.com/calendar/ical/408c54c5483208e82d01dec30a088ede7c00ab95f7ec06abfa371b95cc051b0d%40group.calendar.google.com/public/basic.ics"
           
           curl -L "$CALENDAR_URL" -o calendar.ics
-          # echo "Downloaded calendar.ics"
           
           cat > parse_calendar.sh << 'SCRIPT'
           #!/bin/bash
           
           today=$(date +%Y%m%d)
+          
+          mkdir -p _data
           
           echo "[" > _data/calendar.json
           
@@ -64,8 +65,6 @@ jobs:
                 echo "    \"title\": \"$escaped_title\"," >> _data/calendar.json
                 echo "    \"date\": \"$current_date\"" >> _data/calendar.json
                 echo -n "  }" >> _data/calendar.json
-                
-                # echo " DEBUG $current_title on $current_date"
               fi
               
               current_title=""
@@ -76,9 +75,6 @@ jobs:
           
           echo "" >> _data/calendar.json
           echo "]" >> _data/calendar.json
-          
-          echo ""
-          # echo "completed pull"
           SCRIPT
           
           chmod +x parse_calendar.sh
@@ -92,11 +88,9 @@ jobs:
           if [ -s _data/calendar.json ]; then
             if grep -q "title" _data/calendar.json; then
               git add _data/calendar.json
-              git diff --quiet && git diff --staged --quiet || (git commit -m "Update calendar events [skip ci]" && git push)
-              # echo "Calendar data updated and pushed"
-            else
-              # echo "No events found in calendar"
+              if ! git diff --quiet && ! git diff --staged --quiet; then
+                git commit -m "Update calendar events [skip ci]"
+                git push
+              fi
             fi
-          else
-            # echo "No calendar data generated"
           fi
